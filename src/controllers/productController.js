@@ -37,9 +37,12 @@ const getProducts = async (req, res) => {
       filter.name = { $regex: search, $options: 'i' };
     }
 
+    // if (category) {
+    //   filter.category = { $regex: `^${category}$`, $options: 'i' };
+    // }
     if (category) {
-      filter.category = { $regex: `^${category}$`, $options: 'i' };
-    }
+  filter.category = { $regex: category, $options: 'i' };
+}
 
     if (minPrice !== undefined || maxPrice !== undefined) {
       filter.price = {};
