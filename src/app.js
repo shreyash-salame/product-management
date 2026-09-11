@@ -11,7 +11,11 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const app = express();
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: 'https://dulcet-narwhal-b472eb.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
